@@ -456,7 +456,7 @@ func (wtp *workflowTaskPoller) RespondTaskCompleted(
 		response, err = wtp.service.RespondWorkflowTaskCompleted(grpcCtx, request)
 		if err != nil {
 			traceLog(func() {
-				wtp.logger.Debug("RespondWorkflowTaskCompleted failed.", tagError, err)
+				wtp.logger.Debug("RespondWorkflowTaskCompleted failed.", tagError, err, tagResult, request)
 			})
 		}
 		wtp.eagerActivityExecutor.handleResponse(response, eagerReserved)
