@@ -505,9 +505,9 @@ func (bw *baseWorker) processTask(task interface{}) {
 	err := bw.options.taskWorker.ProcessTask(task)
 	if err != nil {
 		if isClientSideError(err) {
-			bw.logger.Info("Task processing failed with client side error", tagError, err)
+			bw.logger.Info("Task processing failed with client side error", tagError, err, tagResult, task)
 		} else {
-			bw.logger.Info("Task processing failed with error", tagError, err)
+			bw.logger.Info("Task processing failed with error", tagError, err, tagResult, task)
 		}
 	}
 }
